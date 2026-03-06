@@ -2,7 +2,7 @@ const connection = require("../config/db");
 
 exports.getAllProducts = (req, res) => {
   const query = `
-        SELECT * FROM products
+        SELECT * FROM items
     `;
   connection.query(query, (err, rows, fields) => {
     if (err) throw err;
@@ -14,7 +14,7 @@ exports.createProduct = (req, res) => {
   const { itemName, unitPrice, quantity, supplier } = req.body;
 
   const query = `
-        INSERT INTO products (itemName, unitPrice, quantity, supplier)
+        INSERT INTO items (itemName, unitPrice, quantity, supplier)
         VALUES (?, ?, ?, ?)
     `;
 
@@ -31,3 +31,4 @@ exports.createProduct = (req, res) => {
     },
   );
 };
+
